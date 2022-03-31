@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import FamousPeople from "./components/FamousPeople";
 
 function App() {
+  const famousPeople = [
+    {
+      name: "John Mayer",
+      job: "Singer",
+      country: "USA",
+      age: "44",
+      worth: "40M",
+    },
+    {
+      name: "Dwayne Johnson",
+      job: "Actor",
+      country: "USA",
+      age: "49",
+      worth: "320M",
+    },
+    {
+      name: "Mike Tyson",
+      job: "Boxer",
+      country: "USA",
+      age: "55",
+      worth: "10M",
+    },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <FamousPeople items={famousPeople} />
     </div>
   );
 }
