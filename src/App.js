@@ -1,4 +1,6 @@
-import FamousPeople from "./components/FamousPeople";
+import { createElement } from "react";
+import Card from "./components/Card";
+import FamousPerson from "./components/FamousPerson";
 
 function App() {
   const famousPeople = [
@@ -24,11 +26,20 @@ function App() {
       worth: "10M",
     },
   ];
-  return (
-    <div>
-      <FamousPeople items={famousPeople} />
-    </div>
-  );
+
+  for (let i = 0; i < famousPeople.length; i++) {
+    return (
+      <Card className="famous-people">
+        <FamousPerson
+          name={famousPeople[i].name}
+          job={famousPeople[i].job}
+          country={famousPeople[i].country}
+          age={famousPeople[i].age}
+          worth={famousPeople[i].worth}
+        />
+      </Card>
+    );
+  }
 }
 
 export default App;

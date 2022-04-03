@@ -3,3 +3,13 @@ body {
   margin: 0;
   background-color: rgb(44, 44, 229);
 }
+.famous-people {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 30px;
+  margin: 50px auto;
+  width: 80%;
+}
