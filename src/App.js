@@ -1,4 +1,3 @@
-import { createElement } from "react";
 import Card from "./components/Card";
 import FamousPerson from "./components/FamousPerson";
 
