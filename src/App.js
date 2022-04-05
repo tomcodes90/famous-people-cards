@@ -25,20 +25,19 @@ function App() {
       worth: "10M",
     },
   ];
-
+  const people = [];
   for (let i = 0; i < famousPeople.length; i++) {
-    return (
-      <Card className="famous-people">
-        <FamousPerson
-          name={famousPeople[i].name}
-          job={famousPeople[i].job}
-          country={famousPeople[i].country}
-          age={famousPeople[i].age}
-          worth={famousPeople[i].worth}
-        />
-      </Card>
+    people.push(
+      <FamousPerson
+        name={famousPeople[i].name}
+        job={famousPeople[i].job}
+        country={famousPeople[i].country}
+        age={famousPeople[i].age}
+        worth={famousPeople[i].worth}
+      />
     );
   }
+  return <Card className="famous-people">{people}</Card>;
 }
 
 export default App;
