@@ -1,8 +1,10 @@
+import { useState } from "react";
 import Card from "./components/Card";
 import FamousPerson from "./components/FamousPerson";
+import PersonForm from "./components/PersonForm";
 
 function App() {
-  const famousPeople = [
+  const [famousPeople, setFamousPeople] = useState([
     {
       name: "John Mayer",
       job: "Singer",
@@ -24,20 +26,38 @@ function App() {
       age: "55",
       worth: "10M",
     },
-  ];
-  const people = [];
-  for (let i = 0; i < famousPeople.length; i++) {
-    people.push(
+  ]);
+  const addUser = () => {
+    setFamousPeople([
+      ...famousPeople,
+      {
+        name: "Michael Jackson",
+        job: "Actor",
+        country: "USA",
+        age: "49",
+        worth: "320M",
+      },
+    ]);
+    console.log("Adding user");
+  };
+  const people = famousPeople.map((person) => {
+    return (
       <FamousPerson
-        name={famousPeople[i].name}
-        job={famousPeople[i].job}
-        country={famousPeople[i].country}
-        age={famousPeople[i].age}
-        worth={famousPeople[i].worth}
+        name={person.name}
+        job={person.job}
+        country={person.country}
+        age={person.age}
+        worth={person.worth}
       />
     );
-  }
-  return <Card className="famous-people">{people}</Card>;
+  });
+
+  return (
+    <>
+      <PersonForm addUserProp={addUser} />
+      <Card className="famous-people">{people}</Card>
+    </>
+  );
 }
 
 export default App;

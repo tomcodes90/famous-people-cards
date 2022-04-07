@@ -1,0 +1,27 @@
+.person-form {
+  padding: 20px 50px;
+  border: 1px solid;
+  background: white;
+  margin: 10px auto;
+  text-align: center;
+  max-width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+.person-form > * {
+  text-align: left;
+  margin: 5px auto;
+  outline: none;
+}
+.person-form p {
+  color: white;
+  background-color: red;
+  border-radius: 5px;
+  padding: 5px 0px;
+  text-align: center;
+  width: 100%;
+  font-size: 0.7rem;
+}
+.no-display {
+  display: none;
+}
