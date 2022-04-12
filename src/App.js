@@ -27,20 +27,21 @@ const initialFamousPeople = [
 ];
 function App() {
   const [famousPeople, setFamousPeople] = useState([initialFamousPeople]);
-  const people = famousPeople.map((person) => (
-    <FamousPerson
-      job={person.job}
-      country={person.country}
-      age={person.age}
-      worth={person.networth}
-    />
-  ));
 
   const savePersonDataHandler = (enteredPersonData) => {
     setFamousPeople((initialFamousPeople) => {
       return [enteredPersonData, ...initialFamousPeople];
     });
   };
+  const people = famousPeople.map((person) => (
+    <FamousPerson
+      name={person.name}
+      job={person.job}
+      country={person.country}
+      age={person.age}
+      worth={person.networth}
+    />
+  ));
   return (
     <>
       <PersonForm onSavePersonData={savePersonDataHandler} />
