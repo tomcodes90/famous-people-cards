@@ -1,29 +1,28 @@
-import Card from "./Card";
 import "./PersonForm.css";
 import { useState } from "react";
 
-function PersonForm() {
+function PersonForm(props) {
   const [personName, setPersonName] = useState("");
-  const inputPersonName = (event) => {
+  const storePersonName = (event) => {
     setPersonName(event.target.value);
   };
   const [personJob, setPersonJob] = useState("");
-  const inputPersonJob = (event) => {
+  const storePersonJob = (event) => {
     setPersonJob(event.target.value);
   };
   const [personAge, setPersonAge] = useState("");
-  const inputPersonAge = (event) => {
+  const storePersonAge = (event) => {
     setPersonAge(event.target.value);
   };
   const [personNetworth, setPersonNetworth] = useState("");
-  const inputPersonNetworth = (event) => {
+  const storePersonNetworth = (event) => {
     setPersonNetworth(event.target.value);
   };
   const [personCountry, setPersonCountry] = useState("");
-  const inputPersonCountry = (event) => {
+  const storePersonCountry = (event) => {
     setPersonCountry(event.target.value);
   };
-  const submitValue = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
     const personData = {
       name: personName,
@@ -32,25 +31,47 @@ function PersonForm() {
       networth: personNetworth,
       country: personCountry,
     };
-    console.log(personData);
+    props.onSavePersonData(personData);
+    setPersonName("");
+    setPersonJob("");
+    setPersonAge("");
+    setPersonNetworth("");
+    setPersonCountry("");
   };
   return (
     <>
-      <form onSubmit={submitValue} className="person-form">
-        <input onChange={inputPersonName} id="person-name" placeholder="Name" />
-        <input onChange={inputPersonJob} id="person-job" placeholder="Job" />
-        <input onChange={inputPersonAge} id="person-age" placeholder="Age" />
+      <form onSubmit={submitHandler} className="person-form">
         <input
-          onChange={inputPersonNetworth}
+          onChange={storePersonName}
+          id="person-name"
+          placeholder="Name"
+          value={personName}
+        />
+        <input
+          onChange={storePersonJob}
+          id="person-job"
+          placeholder="Job"
+          value={personJob}
+        />
+        <input
+          onChange={storePersonAge}
+          id="person-age"
+          placeholder="Age"
+          value={personAge}
+        />
+        <input
+          onChange={storePersonNetworth}
           id="person-networth"
           placeholder="Networth"
+          value={personNetworth}
         />
         <input
-          onChange={inputPersonCountry}
+          onChange={storePersonCountry}
           id="person-country"
           placeholder="Country"
+          value={personCountry}
         />
-        <button>Add user</button>
+        <button type="submit">Add user</button>
         <p id="person-name__error" className="no-display">
           Please insert name
         </p>
