@@ -19,3 +19,6 @@
 .famous-person span {
   font-weight: 400;
 }
+.famous-person {
+  flex-basis: 15%;
+}

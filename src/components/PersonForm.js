@@ -23,6 +23,7 @@ function PersonForm(props) {
     setPersonCountry(event.target.value);
   };
   const [errorState, setErrorState] = useState(false);
+
   const submitHandler = (event) => {
     event.preventDefault();
     const personData = {
@@ -32,7 +33,7 @@ function PersonForm(props) {
       worth: personNetworth,
       country: personCountry,
     };
-    props.onSavePersonData(personData);
+
     if (
       personName === "" ||
       personJob === "" ||
@@ -43,12 +44,13 @@ function PersonForm(props) {
       setErrorState(true);
     } else {
       setErrorState(false);
+      props.onSavePersonData(personData);
+      setPersonName("");
+      setPersonJob("");
+      setPersonAge("");
+      setPersonNetworth("");
+      setPersonCountry("");
     }
-    setPersonName("");
-    setPersonJob("");
-    setPersonAge("");
-    setPersonNetworth("");
-    setPersonCountry("");
   };
 
   return (
