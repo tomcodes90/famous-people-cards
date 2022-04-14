@@ -22,22 +22,35 @@ function PersonForm(props) {
   const storePersonCountry = (event) => {
     setPersonCountry(event.target.value);
   };
+  const [errorState, setErrorState] = useState(false);
   const submitHandler = (event) => {
     event.preventDefault();
     const personData = {
       name: personName,
       job: personJob,
       age: personAge,
-      networth: personNetworth,
+      worth: personNetworth,
       country: personCountry,
     };
     props.onSavePersonData(personData);
+    if (
+      personName === "" ||
+      personJob === "" ||
+      personAge === "" ||
+      personNetworth === "" ||
+      personCountry === ""
+    ) {
+      setErrorState(true);
+    } else {
+      setErrorState(false);
+    }
     setPersonName("");
     setPersonJob("");
     setPersonAge("");
     setPersonNetworth("");
     setPersonCountry("");
   };
+
   return (
     <>
       <form onSubmit={submitHandler} className="person-form">
@@ -72,21 +85,21 @@ function PersonForm(props) {
           value={personCountry}
         />
         <button type="submit">Add user</button>
-        <p id="person-name__error" className="no-display">
-          Please insert name
-        </p>
-        <p id="person-job__error" className="no-display">
-          Please insert job
-        </p>
-        <p id="person-age__error" className="no-display">
-          Please insert age
-        </p>
-        <p id="person-networth__error" className="no-display">
-          Please insert networth
-        </p>
-        <p id="person-country__error" className="no-display">
-          Please insert country
-        </p>
+        {errorState && personName === "" && (
+          <p className="error-message">Insert name</p>
+        )}
+        {errorState && personJob === "" && (
+          <p className="error-message">Insert job</p>
+        )}
+        {errorState && personAge === "" && (
+          <p className="error-message">Insert age</p>
+        )}
+        {errorState && personNetworth === "" && (
+          <p className="error-message">Insert networth</p>
+        )}
+        {errorState && personCountry === "" && (
+          <p className="error-message">Insert country</p>
+        )}
       </form>
     </>
   );

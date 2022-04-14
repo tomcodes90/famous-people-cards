@@ -6,7 +6,7 @@ body {
 .famous-people {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   align-content: center;
   gap: 30px;
